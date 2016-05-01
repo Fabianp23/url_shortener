@@ -2,12 +2,8 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(user_params)
-      if Url.where(name: @url.name)
-        redirect_to root_path
-      else
-        @url.save
-        redirect_to root_path(id: @url)
-      end
+    @url.save
+    redirect_to root_path(id: @url)
   end
 
   def index
