@@ -1,0 +1,12 @@
+<h1>Url Shortener</h1>
+
+<%= form_tag urls_create_path do %>
+  <%= text_field_tag :name, "https://" %>
+  <%= submit_tag "shorten" %>
+<% end %>
+
+<% if params[:id] %>
+  <% @url = Url.find(params[:id]) %>
+  <p>url = <%= @url.name %></p>
+  <p>new shortened url = <%= link_to url_show_url(@url), url_show_url(@url) %></p>
+<% end %>
